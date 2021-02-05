@@ -6,11 +6,12 @@ import org.junit.runner.RunWith;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-        features = {"src\\test\\resources\\com\\features"},
+        features = {"src\\test\\resources\\com\\featuresePermitExternalApp"},
         glue = {"Stepdefinations","appHooks"},
         plugin = {"pretty","com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:",
         "timeline:test-output-thread/"
         }
+
 )
 public class TestRunnerClass {
 

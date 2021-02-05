@@ -11,7 +11,7 @@ import org.openqa.selenium.remote.CapabilityType;
 import java.util.concurrent.TimeUnit;
 
 public class DriverFactory {
-    public WebDriver driver ;
+
     public static ThreadLocal<WebDriver> tlDriver = new ThreadLocal<>();
 
     /*******

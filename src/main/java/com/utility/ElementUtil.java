@@ -1,9 +1,7 @@
 package com.utility;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebDriverException;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -81,6 +79,30 @@ public  ElementUtil(WebDriver driver){
         else
             numid=null;
         return numid;
+    }
+    public boolean fnWaitForVisibility(WebElement element , int waitFor){
+        boolean visible = false;
+        WebDriverWait wait = new WebDriverWait(driver,waitFor);
+        wait.until(ExpectedConditions.visibilityOf(element));
+        if(element.isDisplayed())
+            return true;
+        else
+            return false;
+    }
+    public WebElement getRowDoc(int id){
+        return driver.findElement(By.xpath("//table//tbody//tr["+id+"]"));
+    }
+
+    public WebElement getSpanText(String text){
+    return driver.findElement(By.xpath("//span[text()='"+text+"']"));
+    }
+    public void setFocusEnter(WebElement element, String value) {
+        Actions action = new Actions(driver);
+        action.moveToElement(element);
+        action.sendKeys(value);
+        action.sendKeys(Keys.DOWN);
+        action.sendKeys(Keys.ENTER);
+        action.build().perform();
     }
 }
 

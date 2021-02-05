@@ -1,5 +1,6 @@
 package Stepdefinations;
 
+import com.factory.BaseAction;
 import com.factory.DriverFactory;
 import com.pageObjectModel.ExternalAppHomePage;
 import com.utility.Constants;
@@ -8,7 +9,6 @@ import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import org.junit.Assert;
-import org.openqa.selenium.WebElement;
 
 import java.util.List;
 import java.util.Map;
@@ -21,7 +21,7 @@ public class ExternalAppStepDefination {
     }
     @Then("User is on the home page")
     public void user_is_on_the_home_page() {
-        Assert.assertTrue(externalAppHomePage.ExternalHomePage().isDisplayed());
+        Assert.assertTrue(externalAppHomePage.checkTabOpened("Connecticut Department of Energy and Environmental Protection Permits and Licenses").isDisplayed());
     }
     @Then("User check tabs are present into the application")
     public void user_check_tabs_are_present_into_the_application(DataTable tabNameList) {
@@ -34,6 +34,7 @@ public class ExternalAppStepDefination {
     @Then("User able to render on {string} tab without error")
     public void user_able_to_render_on_tab_without_error(String tabName) {
         externalAppHomePage.clickOnTab(tabName);
+
         if(externalAppHomePage.checkRenderSuccessful("Application Type") >  1){
             System.out.println(tabName +"is render without error");
         }

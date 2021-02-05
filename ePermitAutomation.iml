@@ -66,13 +66,21 @@
     <orderEntry type="library" scope="TEST" name="Maven: com.madgag:animated-gif-lib:1.4" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: com.github.vandeseer:easytable:0.7.1" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: com.github.ralfstuckert.pdfbox-layout:pdfbox2-layout:1.0.0" level="project" />
-    <orderEntry type="library" scope="TEST" name="Maven: org.yaml:snakeyaml:1.27" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: com.aventstack:klov-reporter:5.0.5" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.mongodb:bson:3.6.4" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.apache.httpcomponents:httpmime:4.5.2" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.mongodb:mongodb-driver:3.3.0" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.mongodb:mongodb-driver-core:3.3.0" level="project" />
-    <orderEntry type="library" scope="TEST" name="Maven: junit:junit:4.13.1" level="project" />
-    <orderEntry type="library" scope="TEST" name="Maven: org.hamcrest:hamcrest-core:1.3" level="project" />
+    <orderEntry type="library" name="Maven: junit:junit:4.13.1" level="project" />
+    <orderEntry type="library" name="Maven: org.hamcrest:hamcrest-core:1.3" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: io.cucumber:cucumber-testng:6.9.0" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.testng:testng:7.3.0" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: com.beust:jcommander:1.78" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.apache.ant:ant:1.10.3" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.apache.ant:ant-launcher:1.10.3" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: com.google.inject:guice:no_aop:4.2.2" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: javax.inject:javax.inject:1" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: aopalliance:aopalliance:1.0" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.yaml:snakeyaml:1.21" level="project" />
   </component>
 </module>

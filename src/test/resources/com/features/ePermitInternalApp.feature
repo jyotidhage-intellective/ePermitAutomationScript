@@ -1,5 +1,5 @@
 Feature: Smoke Test Execution For ePermit Internal Application
-
+  @ePermitInternals
   Scenario: Login to the ePermit internal application
     Given User is on the login page
     Then User verify the username and password field on login page
@@ -8,4 +8,39 @@ Feature: Smoke Test Execution For ePermit Internal Application
       | p8admin_demo  | V3ga123456 |
     Then Title of the home page is "CT DEEP Permits and Licenses"
 
+  @ePermitExternal_SmokeTest
+  Scenario: All tabs are rendered without errors in external application
+    Given User is on the login page in external application
+    Then User is on the home page
+    Then User check tabs are present into the application
+      |TabName|
+      |My Drafts|
+      |My Applications|
+      |My Permits     |
+      |Applications for Review|
+      |Application Types      |
+    Then User able to render on "My Drafts" tab without error
+    Then User able to render on "My Applications" tab without error
+    Then User able to render on "My Permits" tab without error
+    Then User able to render on "Applications for Review" tab without error
+    Then User able to render on "Application Types" tab without error
+  @ePermitExternal_SmokeTest
+  Scenario: User can open any existing case(except the case in draft status) and doesn’t get errors on all tabs
+    Given User is on the login page in external application
+    Then User is on the home page
+    Then User click on "My Applications" tab.
+    Then User checks existing case is present in my application having status not Draft
+    Then User open the existing case
+    Then User check following tabs are present into the application
+      |TabName|
+      |Common Properties|
+      |Application      |
+      |Attachments      |
+      |Documents        |
+      |History/Comments |
+    Then User check application allow user to navigate on "Common Properties" tab without error
+    Then User check application allow user to navigate on "Application" tab without error
+    Then User check application allow user to navigate on "Attachments" tab without error
+    Then User check application allow user to navigate on "Documents" tab without error
+    Then User check application allow user to navigate on "History/Comments" tab without error
 
