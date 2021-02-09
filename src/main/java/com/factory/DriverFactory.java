@@ -5,9 +5,11 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.ie.InternetExplorerOptions;
+import org.openqa.selenium.net.UrlChecker;
 import org.openqa.selenium.remote.BrowserType;
 import org.openqa.selenium.remote.CapabilityType;
 
+import java.net.URL;
 import java.util.concurrent.TimeUnit;
 
 public class DriverFactory {
@@ -30,8 +32,10 @@ public class DriverFactory {
             options.addArguments("--disable.dev.shm.usage");
             options.setExperimentalOption("excludeSwithes", new String[] {"enable-automation"});
             options.setExperimentalOption("useAutomationExtension",false);
+
             String driverpath = System.getProperty("user.dir") + "\\src\\test\\resources\\Drivers\\chromedriver.exe";
-            System.setProperty("webdriver.chrome.driver",driverpath);
+//            System.setProperty("webdriver.chrome.driver",driverpath);
+            System.setProperty("webdriver.chrome.driver", "src\\test\\resources\\Drivers\\chromedriver.exe");
             tlDriver.set(new ChromeDriver());
             setImplicitlyWait(com.utility.Constants.Implicit_Wait);
 

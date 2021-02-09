@@ -7,11 +7,14 @@
 
 	<groupId>com.intellective.selenium</groupId>
 	<artifactId>ePermitAutomation</artifactId>
+	<packaging>jar</packaging>
 	<version>0.0.1-SNAPSHOT</version>
+	<url>http://maven.apache.org</url>
+
 
 	<name>ePermitAutomation</name>
 	<!-- FIXME change it to the project's website -->
-	<url>http://www.example.com</url>
+
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -47,12 +50,7 @@
 			<scope>test</scope>
 		</dependency>
 		<!-- https://mvnrepository.com/artifact/junit/junit -->
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<version>${junit.version}</version>
-			<scope>test</scope>
-		</dependency>
+
 		<dependency>
 			<groupId>io.cucumber</groupId>
 			<artifactId>cucumber-testng</artifactId>
@@ -65,7 +63,11 @@
 			<version>4.13.1</version>
 			<scope>compile</scope>
 		</dependency>
-
+		<dependency>
+			<groupId>io.github.bonigarcia</groupId>
+			<artifactId>webdrivermanager</artifactId>
+			<version>4.0.0</version>
+		</dependency>
 	</dependencies>
 
 	<build>
@@ -87,6 +89,9 @@
 					<systemPropertyVariables>
 						<testng.dtd.http>true</testng.dtd.http>
 					</systemPropertyVariables>
+					<includes>
+						<include>**/testNGReport.java</include>
+					</includes>
 				</configuration>
 			</plugin>
 			<plugin>
@@ -97,7 +102,7 @@
 					<execution>
 						<configuration>
 							<includes>
-								<include>**/TestRunnerClass.java</include>
+								<include>**/testNGReport.java</include>
 							</includes>
 							<parallel>methods</parallel>
 							<threadCount>4</threadCount>
@@ -107,7 +112,6 @@
 					</execution>
 				</executions>
 			</plugin>
-
 		</plugins>
 	</build>
 </project>
