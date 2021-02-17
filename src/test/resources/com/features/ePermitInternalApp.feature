@@ -1,5 +1,5 @@
 Feature: Smoke Test Execution For ePermit Internal Application
-  @ePermitInternals
+  @ePermitInternals_SmokeTest
   Scenario: Login to the ePermit internal application
     Given User is on the login page
     Then User verify the username and password field on login page
@@ -7,4 +7,34 @@ Feature: Smoke Test Execution For ePermit Internal Application
       | username | password |
       | p8admin_demo  | V3ga123456 |
     Then Title of the home page is "CT DEEP Permits and Licenses"
+    Then User check following tabs are present into the application
+    |TabName|
+    |Supervisor Tasks|
+    |Program Tasks   |
+    |Personal Tasks  |
+    Then User able to render on "Supervisor Tasks" tab without error in internal application
+    Then User able to render on "Program Tasks" tab without error in internal application
+    Then User able to render on "Personal Tasks" tab without error in internal application
+
+  @ePermitInternals_SmokeTest
+  Scenario: User can open any existing case(except the case in draft status) and doesn’t get errors on all tabs
+    Given User is on the login page
+    Then User verify the username and password field on login page
+    Then User login into the application by entering username and password
+      | username | password |
+      | p8admin_demo  | V3ga123456 |
+    Then User is on the home page
+    Then User click on "Personal Tasks" tab.
+    Then User checks existing case is present in my application having status not Draft
+    Then User open the existing case
+    Then User check following tabs are present into the application
+      |TabName|
+    |Case Details|
+    |Application |
+    |Case Documents|
+    Then User able to render on "Case Details" tab without error in internal application
+    Then User able to render on "Application" tab without error in internal application
+    Then User able to render on "Case Documents" tab without error in internal application
+
+
 

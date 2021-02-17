@@ -12,7 +12,7 @@ import org.openqa.selenium.interactions.Actions;
 
 public class ExternalAppHomePage extends BaseAction {
     private WebDriver driver = DriverFactory.getDriver();
-    private final By ThreeDot1stRow = By.xpath("(//table//tbody//tr[1]//button[@name='more-actions'])[2]");
+    private final By ThreeDot1stRow = By.xpath("//table//tbody//tr[1]//button[@name='more-actions']");
     private final By properties_menu = By.xpath("//li[text()='Properties']");
     private final By createBtn = By.xpath("//span[text()='Create']");
     private final By documentTab = By.xpath("//div[contains(@data-rbd-droppable-id,'Case_Docs_Search_P8')]//h6[contains(text(),'Document search')]");
@@ -65,7 +65,7 @@ public class ExternalAppHomePage extends BaseAction {
         elementUtil.fnWaitForVisibility(driver.findElement(ThreeDot1stRow),Constants.wait);
         elementUtil.waitAndClick(driver.findElement(ThreeDot1stRow),Constants.wait);
         elementUtil.waitAndClick(driver.findElement(properties_menu),Constants.wait);
-        elementUtil.fnWaitForVisibility(elementUtil.getSpanText("Common Properties"),Constants.wait);
+        //elementUtil.fnWaitForVisibility(elementUtil.getSpanText("Common Properties"),Constants.wait);
 
     }
     public WebElement existingtabName(String tabName){

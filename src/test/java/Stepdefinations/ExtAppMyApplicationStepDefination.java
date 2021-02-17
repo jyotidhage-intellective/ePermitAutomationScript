@@ -1,16 +1,19 @@
 package Stepdefinations;
 
+import com.factory.BaseAction;
 import com.factory.DriverFactory;
 import com.pageObjectModel.ExternalAppHomePage;
+import com.utility.Constants;
 import com.utility.ElementUtil;
 import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.Then;
+import org.apache.tools.ant.taskdefs.Concat;
 import org.junit.Assert;
 
 import java.util.List;
 import java.util.Map;
 
-public class ExtAppMyApplicationStepDefination {
+public class ExtAppMyApplicationStepDefination extends BaseAction {
 
     private ExternalAppHomePage externalAppHomePage = new ExternalAppHomePage(DriverFactory.getDriver(), new ElementUtil(DriverFactory.getDriver()));
     @Then("User click on {string} tab.")
@@ -41,6 +44,7 @@ public class ExtAppMyApplicationStepDefination {
     public void user_check_following_tabs_are_present_into_the_application(DataTable tabNameList) {
         List<Map<String,String>> TabName = tabNameList.asMaps();
         for(Map<String, String> e: TabName ){
+            elementUtil.fnWaitForVisibility(elementUtil.getSpanText(e.get("TabName")), Constants.wait);
             Assert.assertTrue(externalAppHomePage.existingtabName(e.get("TabName")).isDisplayed());
         }
 
