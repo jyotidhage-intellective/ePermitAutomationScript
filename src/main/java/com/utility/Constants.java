@@ -7,4 +7,5 @@ public class Constants {
     public final static String externalAppURL = "http://10.18.100.83:8080/login?token=cn%3DDhage123%2Cou%3DPeople%2Cdc%3Depermit%2Cdc%3Dcom";
     public static final int Implicit_Wait=30;
     public static final int wait=60;
+    public static final int ProcessingWait=180;
 }

@@ -96,10 +96,61 @@ public  ElementUtil(WebDriver driver){
     public WebElement getSpanText(String text){
     return driver.findElement(By.xpath("//span[text()='"+text+"']"));
     }
+    public WebElement getButtonText(String text){
+        return driver.findElement(By.xpath("//button[text()='"+text+"']"));
+    }
+    public WebElement getText(String text){
+        return driver.findElement(By.xpath("//*[text()='"+text+"']"));
+    }
     public void setFocusEnter(WebElement element, String value) {
         Actions action = new Actions(driver);
         action.moveToElement(element);
         action.sendKeys(value);
+        action.sendKeys(Keys.DOWN);
+        action.sendKeys(Keys.ENTER);
+        action.build().perform();
+    }
+    public void moveToElement(WebElement element){
+        Actions actions = new Actions(driver);
+        actions.moveToElement(element);
+        actions.build().perform();
+    }
+    public void setFocus(WebElement element, String value) {
+        Actions action = new Actions(driver);
+        action.moveToElement(element);
+        action.click();
+        action.sendKeys(value);
+        action.build().perform();
+    }
+    public void sendKeysEnter(WebElement element){
+        Actions action = new Actions(driver);
+        action.moveToElement(element);
+        action.click();
+        action.sendKeys(Keys.ENTER);
+        action.build().perform();
+    }
+
+    public void setFocusdblClick(WebElement element) {
+        Actions action = new Actions(driver);
+        action.moveToElement(element);
+        action.doubleClick();
+        action.build().perform();
+    }
+    public void setFocusClick(WebElement element) {
+        Actions action = new Actions(driver);
+        action.moveToElement(element);
+        action.click();
+        action.build().perform();
+    }
+    public void sendKeysDownClick(WebElement element){
+        Actions action = new Actions(driver);
+        action.moveToElement(element);
+        action.sendKeys(Keys.DOWN);
+        action.build().perform();
+    }
+    public void sendKeysDownClickEnter(WebElement element){
+        Actions action = new Actions(driver);
+        action.moveToElement(element);
         action.sendKeys(Keys.DOWN);
         action.sendKeys(Keys.ENTER);
         action.build().perform();
