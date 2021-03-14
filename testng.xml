@@ -3,7 +3,7 @@
 <suite name="SanityTestNew"  >
     <test name="Regression1" >
         <classes>
-            <class name="testRunner.TestRunnerClass">
+            <class name="testNGReport">
             </class>
         </classes>
     </test>
