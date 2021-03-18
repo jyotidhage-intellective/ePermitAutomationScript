@@ -54,7 +54,7 @@ public class ApplicationHooks{
             log.info(scenario.getName()+" is failed");
         }else
             if(!scenario.isFailed()){
-                log.info(scenario.getName()+" is failed");
+                log.info(scenario.getName()+" is pass");
             }
 
     }

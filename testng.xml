@@ -2,8 +2,9 @@
 
 <suite name="SanityTestNew"  >
     <test name="Regression1" >
+        <parameter name="browser" value="chrome"></parameter>
         <classes>
-            <class name="testNGReport">
+            <class name="com.intellective.testRunner.testNGReport">
             </class>
         </classes>
     </test>
