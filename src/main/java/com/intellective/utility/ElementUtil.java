@@ -65,7 +65,7 @@ public  ElementUtil(WebDriver driver){
         return driver.findElements(By.xpath("//table[contains(@class,'jss"+id+"')]//tbody//tr"));
     }
     public WebElement getThOfTableHeader(String text){
-        return driver.findElement(By.xpath("//th[//span[text()='"+ text +"']]"));
+        return driver.findElement(By.xpath("//th[//div[text()='"+ text +"']]"));
     }
     public String getIdOfElement(WebElement element){
         String numid;
@@ -120,6 +120,7 @@ public  ElementUtil(WebDriver driver){
     public void setFocusEnter(WebElement element, String value) {
         Actions action = new Actions(driver);
         action.moveToElement(element);
+        action.click();
         action.sendKeys(value);
         action.sendKeys(Keys.DOWN);
         action.sendKeys(Keys.ENTER);

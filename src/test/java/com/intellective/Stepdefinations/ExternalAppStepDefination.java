@@ -10,6 +10,7 @@ import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import org.junit.Assert;
+import org.openqa.selenium.WebElement;
 
 import java.util.List;
 import java.util.Map;
@@ -43,8 +44,8 @@ public class ExternalAppStepDefination extends BaseAction {
     @Then("User able to render on {string} tab without error")
     public void user_able_to_render_on_tab_without_error(String tabName) {
         externalAppHomePage.clickOnTab(tabName);
-
-        if(externalAppHomePage.checkRenderSuccessful("Application Type") >  1){
+        List<WebElement> ele= getWebElements("MyDrafts_Row","ExternalApp");
+        if(ele.size() >  1){
             System.out.println(tabName +"is render without error");
         }
     }

@@ -31,10 +31,12 @@ Feature: Smoke Test Execution For ePermit Internal Application
       |TabName|
     |Case Details|
     |Application |
-    |Case Documents|
+    |Documents|
+    |History/Comments|
     Then User able to render on "Case Details" tab without error in internal application
     Then User able to render on "Application" tab without error in internal application
-    Then User able to render on "Case Documents" tab without error in internal application
+    Then User able to render on "Documents" tab without error in internal application
+    Then User able to render on "History/Comments" tab without error in internal application
 
 
 
@@ -54,6 +56,7 @@ Feature: Smoke Test Execution For ePermit Internal Application
     Then User able to render on "My Permits" tab without error
     Then User able to render on "Applications for Review" tab without error
     Then User able to render on "Application Types" tab without error
+
   @ePermitExternal_SmokeTest
   Scenario: User can open any existing case(except the case in draft status) and doesn’t get errors on all tabs
     Given User is on the login page in external application

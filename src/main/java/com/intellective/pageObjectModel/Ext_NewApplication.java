@@ -330,7 +330,7 @@ public class Ext_NewApplication extends BaseAction {
     }
 
     public void fillPaymentDetails(){
-     elementUtil.fnWaitForVisibility(elementUtil.getH1tag("External Payment"),Constants.ProcessingWait);
+     elementUtil.fnWaitForVisibility(elementUtil.getH1tag("External Payment"),Constants.documentUploadWait);
      elementUtil.setFocusClick(getWebElement("CreditCard","ExternalApp"));
         elementUtil.setFocusClick(getWebElement("nextButtoninput","ExternalApp"));
      //fill credit card details

@@ -25,9 +25,11 @@ public class InternalApplication extends BaseAction {
         }else if(tabname.equalsIgnoreCase("Application")){
             elementUtil.fnWaitForVisibility(getWebElement("existingcaseApplicationTab",formName),Constants.wait);
             Assert.assertTrue(getWebElement("existingcaseApplicationTab",formName).isDisplayed());
-        }else if(tabname.equalsIgnoreCase("Case Documents")){
+        }else if(tabname.equalsIgnoreCase("Documents")){
             elementUtil.fnWaitForVisibility(getWebElement("existingCaseCaseDocTab",formName),Constants.wait);
             Assert.assertTrue(getWebElement("existingCaseCaseDocTab",formName).isDisplayed());
+        }else if(tabname.equalsIgnoreCase("History/Comments")){
+            Assert.assertTrue(elementUtil.getSpanText("Comment").isDisplayed());
         }
 
     }

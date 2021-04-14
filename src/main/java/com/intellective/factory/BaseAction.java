@@ -24,7 +24,6 @@ public class BaseAction {
     public String caseId;
     public readExcelDataFile data;
     private final Map<String, String> testCase = new ConcurrentHashMap<>();
-   
     private final Map<String, String> testData = new ConcurrentHashMap<>();
     public String scenarioName;
 

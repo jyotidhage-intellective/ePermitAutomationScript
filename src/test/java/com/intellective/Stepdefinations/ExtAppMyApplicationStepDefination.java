@@ -8,6 +8,7 @@ import com.intellective.utility.ElementUtil;
 import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.Then;
 import org.junit.Assert;
+import org.openqa.selenium.WebElement;
 
 import java.util.List;
 import java.util.Map;
@@ -23,8 +24,8 @@ public class ExtAppMyApplicationStepDefination extends BaseAction {
 
     @Then("User checks existing case is present in my application having status not Draft")
     public void user_checks_existing_case_is_present_in_my_application_having_status_not_draft() {
-        int recNo=externalAppHomePage.checkRenderSuccessful("Application Type");
-        if(recNo >=  1) {
+        List<WebElement>  element =getWebElements("PersonalTaskTable","Internal");
+        if(element.size() >=  1) {
             System.out.println("Record is present in the My application menu");
         }
 
@@ -32,8 +33,9 @@ public class ExtAppMyApplicationStepDefination extends BaseAction {
 
     @Then("User open the existing case")
     public void user_open_the_existing_case() {
-        int recNo=externalAppHomePage.checkRenderSuccessful("Application Type");
-        if(recNo >=  1) {
+//        int recNo=externalAppHomePage.checkRenderSuccessful("Application Type");
+        List<WebElement> list = getWebElements("PersonalTaskTable","Internal");
+        if(list.size() >=  1) {
             externalAppHomePage.ContextClickOn1stRow();
 
         }

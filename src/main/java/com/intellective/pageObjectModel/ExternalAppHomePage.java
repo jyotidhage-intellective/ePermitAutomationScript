@@ -8,9 +8,11 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 
+import java.util.List;
+
 public class ExternalAppHomePage extends BaseAction {
     private final WebDriver driver;
-    private final By ThreeDot1stRow = By.xpath("(//table//tbody//tr[1]//td//button[@name='more-actions'])[2]");
+    private final By ThreeDot1stRow = By.xpath("(//table//tbody//tr[1]//td/following::button[contains(@data-test-id,'actions')])");
     private final By properties_menu = By.xpath("//li[text()='Properties']");
     private final By editBtn = By.xpath("//span[text()='Edit']");
     private final By documentTab = By.xpath("//div[contains(@data-rbd-droppable-id,'Case_Docs_Search_P8')]//h6[contains(text(),'Document')]");
@@ -27,7 +29,7 @@ public class ExternalAppHomePage extends BaseAction {
     public void clickOnMyAppTab(String openedtabname){
         elementUtil.waitAndClick(getTab(openedtabname),Constants.wait);
         if(openedtabname.equalsIgnoreCase("My Applications"))
-            elementUtil.fnWaitForVisibility(driver.findElement(By.xpath("//div[contains(@data-rbd-droppable-id,'Case_EP_ePermit')]//h6[contains(text(),'My Applications')]")),Constants.wait);
+            elementUtil.fnWaitForVisibility(driver.findElement(By.xpath("//div[contains(@aria-labelledby,'Case_EP_ePermit')]//h6[contains(text(),'My Applications')]")),Constants.wait);
         else if(openedtabname.equalsIgnoreCase("My Permits"))
             elementUtil.fnWaitForVisibility(driver.findElement(By.xpath("//div[@aria-labelledby='ST_Case_EP_ePermit_Permits']//h6")),Constants.wait);
         else if(openedtabname.equalsIgnoreCase("My Drafts"))
@@ -43,13 +45,13 @@ public class ExternalAppHomePage extends BaseAction {
         if(tabName.equalsIgnoreCase("Application Types"))
             tabName = "Application Search";
         if(tabName.equalsIgnoreCase("My Applications"))
-            elementUtil.fnWaitForVisibility(driver.findElement(By.xpath("//div[contains(@data-rbd-droppable-id,'Case_EP_ePermit')]//h6[contains(text(),'My Applications')]")),Constants.wait);
+            elementUtil.fnWaitForVisibility(driver.findElement(By.xpath("//div[contains(@aria-labelledby,'Case_EP_ePermit')]//h6[contains(text(),'My Applications')]")),Constants.wait);
         else if(tabName.equalsIgnoreCase("My Permits"))
             elementUtil.fnWaitForVisibility(driver.findElement(By.xpath("//div[@aria-labelledby='ST_Case_EP_ePermit_Permits']//h6")),Constants.wait);
         else if(tabName.equalsIgnoreCase("Applications for Review"))
-            elementUtil.fnWaitForVisibility(driver.findElement(By.xpath("//div[contains(@data-rbd-droppable-id,'EP_ePermit_Review')]//h6[contains(text(),'Applications for Review')]")),Constants.wait);
+            elementUtil.fnWaitForVisibility(driver.findElement(By.xpath("//div[contains(@aria-labelledby,'EP_ePermit_Review')]//h6[contains(text(),'Applications for Review')]")),Constants.wait);
         else if(tabName.equalsIgnoreCase("Application Search"))
-            elementUtil.fnWaitForVisibility(driver.findElement(By.xpath("//div[contains(@data-rbd-droppable-id,'EP_Application')]//h6[contains(text(),'Application Search')]")),Constants.wait);
+            elementUtil.fnWaitForVisibility(driver.findElement(By.xpath("//div[contains(@aria-labelledby,'EP_Application')]//h6[contains(text(),'Application Search')]")),Constants.wait);
         else if(tabName.equalsIgnoreCase("Applications"))
             getWebElement("ApplicationTabVerification","ExternalApp").isDisplayed();
         else if(tabName.equalsIgnoreCase("Attachments"))
@@ -62,9 +64,14 @@ public class ExternalAppHomePage extends BaseAction {
         return elementUtil.fnGetNoOfRecordPresentnDashboard(colName);
     }
     public synchronized void ContextClickOn1stRow() {
-        elementUtil.fnWaitForVisibility(driver.findElement(ThreeDot1stRow),Constants.wait);
-        elementUtil.waitAndClick(driver.findElement(ThreeDot1stRow),Constants.wait);
-        elementUtil.waitAndClick(driver.findElement(properties_menu),Constants.wait);
+
+//        elementUtil.fnWaitForVisibility(driver.findElement(ThreeDot1stRow),Constants.wait);
+        List<WebElement> elements = driver.findElements(ThreeDot1stRow);
+        for(int i=11;i<elements.size();i++) {
+            elementUtil.waitAndClick(elements.get(i), Constants.wait);
+            elementUtil.waitAndClick(driver.findElement(properties_menu), Constants.wait);
+            break;
+        }
         //elementUtil.fnWaitForVisibility(elementUtil.getSpanText("Common Properties"),Constants.wait);
 
     }
@@ -76,7 +83,8 @@ public class ExternalAppHomePage extends BaseAction {
         if(tabName.equalsIgnoreCase("Common Properties"))
             elementUtil.fnWaitForVisibility(driver.findElement(editBtn),Constants.wait);
         else if(tabName.equalsIgnoreCase("Documents"))
-            elementUtil.fnWaitForVisibility(driver.findElement(documentTab),Constants.wait);
+//            elementUtil.fnWaitForVisibility(driver.findElement(documentTab),Constants.wait);
+            elementUtil.fnWaitForVisibility(elementUtil.getSpanText("Attach"),Constants.wait);
         else if(tabName.equalsIgnoreCase("History/Comments"))
             elementUtil.fnWaitForVisibility(elementUtil.getSpanText("Comment"),Constants.wait);
         else if(tabName.equalsIgnoreCase("Attachments"))
