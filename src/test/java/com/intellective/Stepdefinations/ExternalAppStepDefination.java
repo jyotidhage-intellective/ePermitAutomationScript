@@ -19,7 +19,12 @@ public class ExternalAppStepDefination extends BaseAction {
     private ExternalAppHomePage externalAppHomePage = new ExternalAppHomePage(DriverFactory.getDriver(), new ElementUtil(DriverFactory.getDriver()));
     @Given("User is on the login page in external application")
     public void user_is_on_the_login_page_in_external_application() {
-        DriverFactory.getDriver().get(Constants.externalAppURL);
+        if(Constants.environment.equalsIgnoreCase("INT")){
+            DriverFactory.getDriver().get(Constants.externalAppURL_INT);
+        }else if(Constants.environment.equalsIgnoreCase("DEV")){
+            DriverFactory.getDriver().get(Constants.externalAppURL_Dev);
+        }
+
     }
 
     @Then("Read test data to this scenario from excel file")

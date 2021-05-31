@@ -17,7 +17,12 @@ public class LoginSetDef {
 
     @Given("User is on the login page")
     public void user_is_on_the_login_page() {
-        DriverFactory.getDriver().get(Constants.internalAppURL);
+        if(Constants.environment.equalsIgnoreCase("INT")){
+            DriverFactory.getDriver().get(Constants.internalAppURL_INT);
+        }else if(Constants.environment.equalsIgnoreCase("DEV")){
+            DriverFactory.getDriver().get(Constants.internalAppURL_Dev);
+        }
+
         loginPage = new LoginPage();
         Assert.assertTrue(loginPage.userName.isDisplayed());
     }
@@ -35,7 +40,19 @@ public class LoginSetDef {
     @Then("User login into the application by entering username and password")
     public void user_login_into_the_application_by_entering_username_and_password(DataTable dataTable) {
         List<Map<String,String>> credential = dataTable.asMaps();
-        loginPage.fnLoginApplication(credential.get(0).get("username"),credential.get(0).get("password"));
+        String username="";
+        String password="";
+        if(Constants.environment.equalsIgnoreCase("INT")){
+            username = Constants.INT_UserName;
+            password = Constants.INT_password;
+        }else if(Constants.environment.equalsIgnoreCase("DEV")){
+            username=Constants.Dev_UserName;
+            password=Constants.Dev_password;
+        }
+
+//        loginPage.fnLoginApplication(credential.get(0).get("username"),credential.get(0).get("password"));
+        loginPage.fnLoginApplication(username,password);
+
     }
     @Then("user is on home page")
     public void user_is_on_home_page() {
