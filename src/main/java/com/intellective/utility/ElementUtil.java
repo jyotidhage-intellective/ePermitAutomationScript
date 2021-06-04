@@ -90,6 +90,9 @@ public  ElementUtil(WebDriver driver){
     public WebElement getSpanText(String text){
     return driver.findElement(By.xpath("//span[text()='"+text+"']"));
     }
+    public WebElement getPText(String text){
+        return driver.findElement(By.xpath("//p[text()='"+text+"']"));
+    }
     public WebElement getSpanContainsText(String text){
         return driver.findElement(By.xpath("//span[contains(text(),'"+text+"')]"));
     }

@@ -19,7 +19,7 @@ public class InternalApplication extends BaseAction {
         } else if (tabname.equalsIgnoreCase("Personal Tasks")){
             elementUtil.fnWaitForVisibility(getWebElement( "PersonalTab",formName), Constants.wait);
             Assert.assertTrue(getWebElement("PersonalTab",formName).isDisplayed());
-        }else if(tabname.equalsIgnoreCase("Case Details")){
+        }else if(tabname.equalsIgnoreCase("Common Properties")){
             elementUtil.fnWaitForVisibility(elementUtil.getSpanText("Approve"),Constants.wait);
             Assert.assertTrue(elementUtil.getSpanText("Approve").isDisplayed());
         }else if(tabname.equalsIgnoreCase("Application")){

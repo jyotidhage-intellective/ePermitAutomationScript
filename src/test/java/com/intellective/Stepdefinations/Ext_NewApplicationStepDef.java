@@ -90,13 +90,13 @@ public class Ext_NewApplicationStepDef extends BaseAction {
 
     @Then("User check the affiliation list for the selected application and check the {string} and {string} affiliation is mandatory")
     public void user_check_the_affiliation_list_for_the_selected_application_and_check_the_and_affiliation_is_mandatory(String applicant, String BillingContact) {
-        elementUtil.fnWaitForVisibility(elementUtil.getSpanText(applicant), Constants.ProcessingWait);
-        elementUtil.moveToElement(elementUtil.getSpanText(applicant));
+        elementUtil.fnWaitForVisibility(elementUtil.getPText(applicant), Constants.ProcessingWait);
+        elementUtil.moveToElement(elementUtil.getPText(applicant));
         sleep(300);
         elementUtil.fnWaitForVisibility(elementUtil.getText("Required"), Constants.wait);
         Assert.assertTrue(elementUtil.getText("Required").isDisplayed());
         elementUtil.fnWaitForVisibility(elementUtil.getText("Required"), Constants.wait);
-        elementUtil.moveToElement(elementUtil.getSpanText(BillingContact));
+        elementUtil.moveToElement(elementUtil.getPText(BillingContact));
         Assert.assertTrue(elementUtil.getText("Required").isDisplayed());
         ListOfAffiliation= ext_newApplication.fnAddAffiliationInList();
     }

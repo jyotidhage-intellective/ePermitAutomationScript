@@ -1,18 +1,15 @@
 package com.intellective.factory;
 
-import java.util.concurrent.TimeUnit;
-
-import com.gargoylesoftware.htmlunit.BrowserVersion;
+import com.intellective.utility.Constants;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.htmlunit.HtmlUnitDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.ie.InternetExplorerOptions;
 import org.openqa.selenium.remote.BrowserType;
 import org.openqa.selenium.remote.CapabilityType;
 
-import com.intellective.utility.Constants;
+import java.util.concurrent.TimeUnit;
 
 public class DriverFactory {
 

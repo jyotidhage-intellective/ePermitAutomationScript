@@ -81,10 +81,10 @@ public class ExternalAppHomePage extends BaseAction {
     public void clickOnExistingCaseTab(String tabName){
         elementUtil.waitAndClick(elementUtil.getSpanText(tabName),Constants.wait);
         if(tabName.equalsIgnoreCase("Common Properties"))
-            elementUtil.fnWaitForVisibility(driver.findElement(editBtn),Constants.wait);
+            elementUtil.fnWaitForVisibility(getWebElement("Email","ExternalApp"),Constants.wait);
         else if(tabName.equalsIgnoreCase("Documents"))
 //            elementUtil.fnWaitForVisibility(driver.findElement(documentTab),Constants.wait);
-            elementUtil.fnWaitForVisibility(elementUtil.getSpanText("Attach"),Constants.wait);
+            elementUtil.fnWaitForVisibility(getWebElement("ApplicationFolder","ExternalApp"),Constants.wait);
         else if(tabName.equalsIgnoreCase("History/Comments"))
             elementUtil.fnWaitForVisibility(elementUtil.getSpanText("Comment"),Constants.wait);
         else if(tabName.equalsIgnoreCase("Attachments"))
