@@ -8,6 +8,8 @@ import com.intellective.utility.Constants;
 import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.Then;
 import org.junit.Assert;
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 
 import java.util.List;
@@ -17,6 +19,7 @@ public class Ext_NewApplicationStepDef extends BaseAction {
     private final Ext_NewApplication ext_newApplication = new Ext_NewApplication();
     private final CommonsApp commonsApp = new CommonsApp();
     private String caseId;
+    private List<String>ListOfAffiliation;
 
 
     @Then("User click on {string} button")
@@ -90,6 +93,8 @@ public class Ext_NewApplicationStepDef extends BaseAction {
 
     @Then("User check the affiliation list for the selected application and check the {string} and {string} affiliation is mandatory")
     public void user_check_the_affiliation_list_for_the_selected_application_and_check_the_and_affiliation_is_mandatory(String applicant, String BillingContact) {
+        sleep(4000);
+        DriverFactory.getDriver().findElement(By.cssSelector("body")).sendKeys(Keys.CONTROL, Keys.END);
         elementUtil.fnWaitForVisibility(elementUtil.getPText(applicant), Constants.ProcessingWait);
         elementUtil.moveToElement(elementUtil.getPText(applicant));
         sleep(300);
@@ -99,6 +104,9 @@ public class Ext_NewApplicationStepDef extends BaseAction {
         elementUtil.moveToElement(elementUtil.getPText(BillingContact));
         Assert.assertTrue(elementUtil.getText("Required").isDisplayed());
         ListOfAffiliation= ext_newApplication.fnAddAffiliationInList();
+        setListOfAffiliation(ListOfAffiliation);
+
+
     }
 
     @Then("Click on {string} button on commons io field.")
@@ -129,7 +137,7 @@ public class Ext_NewApplicationStepDef extends BaseAction {
     }
     @Then("Add the different affiliation in the application")
     public void add_the_different_affiliation_in_the_application(){
-        commonsApp.fnSelectaffiliaction("Yes",ListOfAffiliation);
+        commonsApp.fnSelectaffiliaction("Yes",getListOfAffiliation());
     }
     @Then("User open the created ePermiting case")
     public void user_open_the_created_ePermiting_case(){
@@ -151,7 +159,9 @@ public class Ext_NewApplicationStepDef extends BaseAction {
 
     @Then("USer validate that Affiliation control presents the same data that was entered in the wizard and Next button is enabled")
     public void user_validate_that_Affiliation_control_presents_same_data_that_was_entered_in_the_wizard_and_Next_button_is_enabled(){
-        Assert.assertTrue((elementUtil.getSpanText("Dhage Jyoti").isDisplayed()));
+        sleep(3000);
+        DriverFactory.getDriver().findElement(By.cssSelector("body")).sendKeys(Keys.CONTROL, Keys.END);
+//        Assert.assertTrue((elementUtil.getSpanText("Jyoti Dhage").isDisplayed()));
         Assert.assertTrue(elementUtil.getSpanText("Next").isEnabled());
     }
     @Then("User click on Next button and validate correct data is populated on next screen")
@@ -199,7 +209,7 @@ public class Ext_NewApplicationStepDef extends BaseAction {
     }
     @Then("User Validate that logic for hidden fields works in Part III_Q5 after selecting Yes-LavelA-Yes")
     public void user_validate_that_logic_for_hidden_fields_works_in_part_iii_q5_after_selecting_yes_level_a_yes() {
-        ext_newApplication.PartIIIQ5("Yes","Lavel A","Yes");
+        ext_newApplication.PartIIIQ5("Yes","Lavel A","No");
     }
 
     @Then("User validate that new rows can be added to the table in Part III_Q7")
@@ -296,5 +306,11 @@ public class Ext_NewApplicationStepDef extends BaseAction {
 //        elementUtil.waitAndClick(elementUtil.checkStatusOfCase(caseId,"Pending Payment"),Constants.wait);
     }
 
+    public List<String> getListOfAffiliation() {
+        return ListOfAffiliation;
+    }
 
+    public void setListOfAffiliation(List<String> listOfAffiliation) {
+        ListOfAffiliation = listOfAffiliation;
+    }
 }

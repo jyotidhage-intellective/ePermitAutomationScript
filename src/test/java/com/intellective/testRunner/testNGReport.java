@@ -19,7 +19,7 @@ import org.testng.annotations.Test;
             },
             monochrome = true,
             glue = {"com/intellective/Stepdefinations", "com/intellective/appHooks"},
-            features = {"resources\\com\\features\\sample.feature"},
+            features = {"resources\\com\\features\\ePermitExternalApp.feature"},
             dryRun =false
     )
 

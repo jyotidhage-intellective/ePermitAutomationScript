@@ -146,10 +146,16 @@ public  ElementUtil(WebDriver driver){
         Actions action = new Actions(driver);
         action.moveToElement(element);
         action.click();
+//        action.sendKeys(Keys.ENTER);
+        action.build().perform();
+    }
+    public void sendKeysEnter1(WebElement element){
+        Actions action = new Actions(driver);
+        action.moveToElement(element);
+//        action.click();
         action.sendKeys(Keys.ENTER);
         action.build().perform();
     }
-
     public void setFocusdblClick(WebElement element) {
         Actions action = new Actions(driver);
         action.moveToElement(element);

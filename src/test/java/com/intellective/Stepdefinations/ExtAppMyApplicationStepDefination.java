@@ -31,6 +31,15 @@ public class ExtAppMyApplicationStepDefination extends BaseAction {
 
     }
 
+    @Then("User checks existing case is present in Supervisor Tasks having status not Draft")
+    public void user_checks_existing_case_is_present_in_Supervisor_Tasks_having_status_not_draft() {
+        List<WebElement>  element =getWebElements("SupervisorTab","Internal");
+        if(element.size() >=  1) {
+            System.out.println("Record is present in Supervisor tab");
+        }
+
+    }
+
     @Then("User open the existing case")
     public void user_open_the_existing_case() {
 //        int recNo=externalAppHomePage.checkRenderSuccessful("Application Type");
@@ -38,6 +47,19 @@ public class ExtAppMyApplicationStepDefination extends BaseAction {
         if(list.size() >=  1) {
             externalAppHomePage.ContextClickOn1stRow();
 
+        }
+    }
+    @Then("User open the existing case from the {string} tab.")
+    public void user_open_the_existing_case_from_the_tab(String tabName) {
+        List<WebElement> list=null;
+        if(tabName.equalsIgnoreCase("Program Tasks")){
+            list = getWebElements("TaskTable","Internal");
+        }else if(tabName.equalsIgnoreCase("Supervisor Tasks"))
+            list = getWebElements("SupervisorTaskTable","Internal");
+        else if(tabName.equalsIgnoreCase("Personal Tasks"))
+            list = getWebElements("PersonalTaskTable","Internal");
+        if(list.size() >=  1) {
+            externalAppHomePage.ContextClickOn1stRow();
         }
     }
 

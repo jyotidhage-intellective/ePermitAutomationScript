@@ -66,8 +66,15 @@ public class ExternalAppHomePage extends BaseAction {
     public synchronized void ContextClickOn1stRow() {
 
 //        elementUtil.fnWaitForVisibility(driver.findElement(ThreeDot1stRow),Constants.wait);
+        sleep(1000);
         List<WebElement> elements = driver.findElements(ThreeDot1stRow);
-        for(int i=11;i<elements.size();i++) {
+        int start=0;
+        if(elements.size()>10){
+            start=11;
+        }else{
+            start=1;
+        }
+        for(int i=start;i<elements.size();i++) {
             elementUtil.waitAndClick(elements.get(i), Constants.wait);
             elementUtil.waitAndClick(driver.findElement(properties_menu), Constants.wait);
             break;

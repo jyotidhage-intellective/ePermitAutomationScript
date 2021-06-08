@@ -73,12 +73,13 @@ public class BaseAction {
     public boolean selectCombobox(WebElement element,String Value){
         boolean exist;
         elementUtil.setFocusClick(element);
-        elementUtil.sendKeysDownClick(element);
+//        elementUtil.sendKeysDownClick(element);
         String valueXpath = "//option[text()='"+Value+"']";
         try{
             WebElement item =  getElement(valueXpath);
             item.click();
             elementUtil.sendKeysEnter(element);
+            sleep(500);
             exist = true;
         }catch (Exception e){
             exist = false;
@@ -86,7 +87,7 @@ public class BaseAction {
         return exist;
     }
     public void selectComboboxcontainsindivisual(WebElement element) {
-        
+        sleep(300);
         elementUtil.setFocusClick(element);
        elementUtil.sendKeysDownClickEnter(element);
     }

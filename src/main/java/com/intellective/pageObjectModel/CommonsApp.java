@@ -97,19 +97,37 @@ public class CommonsApp extends BaseAction {
         elementUtil.waitAndClick(getWebElement("nextButtonNew","ExternalApp"),20);
     }
     public void fnSelectaffiliaction(String contact, List<String> ListOfAffiliation)  {
-        for(String name:ListOfAffiliation){
-            WebElement billingContact =getWebElement("billingContact",formName);
+       // for(String name:ListOfAffiliation){
+        WebElement billingContact=null;
+        boolean isDisplay=false;
+        do {
+            sleep(3000);
+            billingContact = getWebElement("billingContact", formName);
             elementUtil.fnWaitForVisibility(billingContact, Constants.wait);
-            if (billingContact.isDisplayed() &&(!name.equalsIgnoreCase("Property Owner"))) {
-                selectCombobox(billingContact, contact);
-                try {
+//            if (billingContact.isDisplayed() && (!name.equalsIgnoreCase("Property Owner"))) {
+            if(getWebElement("descriptionOfAffiliation","ExternalAppHCL").getText().contains("add another")) {
+                selectCombobox(billingContact, "No");
+            }else{
+                if (billingContact.isDisplayed()) {
+                    selectCombobox(billingContact, contact);
+                    try {
 //                    fnSameCompanySelect("Applicant - Dhage Jyoti");
-                    fnSameCompanySelect();
-                }catch (Exception e){
-                    selectCombobox(billingContact, "No");
+                        fnSameCompanySelect();
+//                    sleep(1000);
+                    } catch (Exception e) {
+                        selectCombobox(billingContact, "No");
+//                    sleep(2000);
+                    }
                 }
             }
-        }
+            try {
+                getWebElement("billingContact", formName).isDisplayed();
+                isDisplay=true;
+            }catch (Exception e){
+                isDisplay=false;
+            }
+        }while (isDisplay);
+        //}
         try {
             Thread.sleep(30);
         }catch (Exception e){
