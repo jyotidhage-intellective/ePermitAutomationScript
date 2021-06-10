@@ -10,8 +10,8 @@ public class Constants {
     public final static  String INT_password= "June32020";
     public final static  String Dev_UserName= "p8admin_demo";
     public final static  String Dev_password= "V3ga123456";
-    public static final int Implicit_Wait=30;
-    public static final int wait=60;
+    public static final int Implicit_Wait=120;
+    public static final int wait=80;
     public static final int documentUploadWait=300;
     public static final int ProcessingWait=180;
     public static final String TestDataPath = "resources/TestData/TestData.xlsx";

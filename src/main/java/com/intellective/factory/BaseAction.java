@@ -16,6 +16,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
+import static java.lang.Thread.sleep;
+
 public class BaseAction {
     private final WebDriver driver = DriverFactory.getDriver();
     public Configuration conf =Configuration.read();
@@ -53,7 +55,7 @@ public class BaseAction {
     public boolean selectComboboxSendKeys(WebElement element,String Value){
         boolean exist;
         elementUtil.setFocus(element,Value);
-        String valueXpath = "//option[contains(text(),'"+Value+"')]";
+        String valueXpath = "//*[contains(text(),'"+Value+"')]";
         try{
             WebElement item = getElement(valueXpath);
             if(item.isDisplayed()) {
@@ -86,6 +88,18 @@ public class BaseAction {
         }
         return exist;
     }
+    public void setdataSendKeysEnterkeyDown(WebElement element, String value) {
+        element.sendKeys(value);
+        try {
+            sleep(1000);
+        }catch (Exception e){
+
+        }
+        element.sendKeys(Keys.DOWN);
+        element.sendKeys(Keys.ENTER);
+
+    }
+
     public void selectComboboxcontainsindivisual(WebElement element) {
         sleep(300);
         elementUtil.setFocusClick(element);

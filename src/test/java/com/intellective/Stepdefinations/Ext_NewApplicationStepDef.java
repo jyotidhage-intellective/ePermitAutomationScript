@@ -173,6 +173,12 @@ public class Ext_NewApplicationStepDef extends BaseAction {
     @Then("User validate that site address validation works for valid address")
     public void user_validate_that_site_address_validation_works_for_valid_address(DataTable address){
         try{
+            elementUtil.fnWaitForVisibility(getWebElement("Part1Expander","ExternalApp"),Constants.wait);
+            elementUtil.waitAndClick(getWebElement("Part1Expander","ExternalApp"),Constants.wait);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        try{
             elementUtil.fnWaitForVisibility(elementUtil.getSpanContainsText("PUBLIC NOTICE OF APPLICATION"),20);
             elementUtil.waitAndClick(getWebElement("NotificationExpander","ExternalApp"),Constants.wait);
         }catch (Exception e){
